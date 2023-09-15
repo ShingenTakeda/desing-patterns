@@ -1,0 +1,15 @@
+{
+	"authors": [
+		"gustavo"
+	],
+	"copyright": "Copyright © 2023, gustavo",
+	"dependencies": {
+		"raylib-d": "~>4.2.4"
+	},
+	"libs": ["raylib"],
+	"lflags-posix" : ["-L."],
+	"lflags-linux" : ["-rpath=$$ORIGIN"],
+	"description": "A minimal D application.",
+	"license": "MIT",
+	"name": "design-patterns"
+}
