@@ -1,17 +1,9 @@
-module scene;
-
+module base.scene;
 
 class Scene
 {
-    void update()
-    {
-
-    }
-
-    void draw()
-    {
-        
-    }
+    abstract void update();
+    abstract void draw();
 }
 
 class SceneManager
@@ -21,7 +13,8 @@ class SceneManager
 
     this(string sceneName, Scene firstScene)
     {
-        this.scenes[string] = firstScene;
+        this.scenes[sceneName] = firstScene;
+        this.setScene(sceneName);
     }
 
     void addScene(string sceneName, Scene scene)

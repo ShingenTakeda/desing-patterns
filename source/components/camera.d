@@ -1,0 +1,2 @@
+module base.components.camera;
+

@@ -16,3 +16,4 @@ design-patterns-test-*
 *.lst
 *.so
 *.so.*
+.vscode

@@ -1,6 +1,5 @@
 import std.stdio;
-import raylib;
-import game;
+import base.game;
 
 
 void main()

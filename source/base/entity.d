@@ -1,10 +1,15 @@
-module entity;
+module base.entity;
 
 //Protoype pattern
 
 class EntityManager
 {
-    void AddEntity()
+    void addEntity()
+    {
+        
+    }
+
+    void killEntity()
     {
         
     }

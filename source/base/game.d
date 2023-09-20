@@ -1,9 +1,10 @@
-module game;
+module base.game;
 import std.stdio;
+import base.defaults;
 import raylib;
-import scene;
+import base.scene;
 
-//TODO: Escrever uma cdna parão para conseguir initializar a engine sem problemas
+//TODO: Escrever uma cena parão para conseguir initializar a engine sem problemas
 class Game
 {
     private int windowW;
@@ -11,15 +12,24 @@ class Game
     private int FPS;
     private string windowName;
     private SceneManager sceneManager;
+    private DefaultScene d_scene = new DefaultScene;
 
-    this(string windowName, int windowW, int windowH, int FPS, Scene firstScene)
+    this(string windowName, int windowW, int windowH, int FPS, Scene firstScene = null)
     {
         writeln("Initializando o jogo");
         this.windowW = windowW;
         this.windowH = windowH;
         this.FPS = FPS;
         this.windowName = windowName;
-        this.sceneManager = new SceneManager("cena1", firstScene);
+
+        if(firstScene !is null)
+        {
+            this.sceneManager = new SceneManager("cena1", firstScene);
+        }
+        else
+        {
+            this.sceneManager = new SceneManager("cena1", this.d_scene);
+        }
     }
 
     void update()
@@ -31,7 +41,6 @@ class Game
     {
         BeginDrawing();
         ClearBackground(Colors.RAYWHITE);
-        //DrawText("Hello, World!", 330, 300, 28, Colors.BLACK);
         sceneManager.draw();
         EndDrawing();
     }
@@ -39,13 +48,17 @@ class Game
     void run()
     {
         InitWindow(windowW, windowH, windowName.ptr);
+        //Load filw into memory here
+        InitAudioDevice();
         SetTargetFPS(60);
-        scope(exit) CloseWindow();
+        scope (exit)
+            CloseWindow();
 
-        while(!WindowShouldClose())
+        while (!WindowShouldClose())
         {
             this.update();
             this.draw();
         }
     }
 }
+
