@@ -3,6 +3,7 @@ import std.stdio;
 import base.defaults;
 import raylib;
 import base.scene;
+import base.stores;
 
 //TODO: Escrever uma cena parão para conseguir initializar a engine sem problemas
 class Game
@@ -12,6 +13,8 @@ class Game
     private int FPS;
     private string windowName;
     private SceneManager sceneManager;
+    private SpriteStore spriteStore;
+    private SoundStore soundStore;
     private DefaultScene d_scene = new DefaultScene;
 
     this(string windowName, int windowW, int windowH, int FPS, Scene firstScene = null)
@@ -40,7 +43,7 @@ class Game
     void draw()
     {
         BeginDrawing();
-        ClearBackground(Colors.RAYWHITE);
+        ClearBackground(Colors.GRAY);
         sceneManager.draw();
         EndDrawing();
     }
@@ -48,7 +51,7 @@ class Game
     void run()
     {
         InitWindow(windowW, windowH, windowName.ptr);
-        //Load filw into memory here
+        //Load resources into memory here with the stores
         InitAudioDevice();
         SetTargetFPS(60);
         scope (exit)

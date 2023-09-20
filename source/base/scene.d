@@ -1,9 +1,19 @@
 module base.scene;
 
+import base.game_object;
+
 class Scene
 {
     abstract void update();
     abstract void draw();
+}
+
+class BasicScene : Scene
+{
+    EntityManager entityManager;
+
+    override void update() {}
+    override void draw() {}
 }
 
 class SceneManager

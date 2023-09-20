@@ -4,8 +4,6 @@ import base.scene;
 
 class DefaultScene : Scene
 {
-  static this() {}
-
   override void update()
   {
 

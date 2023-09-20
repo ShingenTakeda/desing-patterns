@@ -1,22 +1,36 @@
 module base.game_object;
 
-class GameObject {}
+interface GameObject 
+{
+    void draw();
+    void update();
+}
 
 class Entity : GameObject
 {
-    private Component[] components;
-    private Drawable[] drawable;
+    GameObject[] components;
 
-    abstract void update();
-    abstract void draw();
+    override void update() {}
+    override void draw() {}
 }
 
 class Component : GameObject
 {
-    abstract void update();
+    override void draw() {}
+    override void update() {}
 }
 
-class Drawable
+struct EntityManager
 {
-    abstract void draw();
+    GameObject[] entities;
+
+    void addEntity(GameObject entity)
+    {
+
+    }
+
+    void killEntity(int id)
+    {
+        
+    }
 }
