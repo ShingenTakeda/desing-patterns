@@ -10,7 +10,7 @@ class Scene
 
 class BasicScene : Scene
 {
-    EntityManager entityManager;
+    //EntityManager entityManager;
 
     override void update() {}
     override void draw() {}

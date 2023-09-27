@@ -1,23 +1,105 @@
 module base.game_object;
 
-interface GameObject 
+class Component
 {
-    void draw();
-    void update();
+    abstract string getType();
+    abstract string getSpecificType();
+    abstract void disableComponent();
+    abstract void enableComponent();
+    abstract bool enabled();
+    //abstract void start(GameObjectSharer gos, GameObject self);
 }
 
-class Entity : GameObject
+class UpdateComponent : Component
 {
-    GameObject[] components;
+    private string type = "update";
+    private bool enabled = false;
 
-    override void update() {}
-    override void draw() {}
+    abstract void update();
+
+    override string getType()
+    {
+        return this.type;
+    }
+
+    override void disableComponent()
+    {
+        this.enabled = false;
+    }
+
+    override void enableComponent()
+    {
+        this.enabled = true;
+    }
+
+    override bool enabled()
+    {
+        return this.enabled;
+    }
+
+    void start()//(GameObjectSharer* gos, GameObject* self) <- change to this argument later
+    {
+
+    }
 }
 
-class Component : GameObject
+class GraphicsComponentLocation : Component
 {
-    override void draw() {}
-    override void update() {}
+    private string type = "graphics";
+    private bool enabled = false;
+
+    abstract void draw();
+    abstract void initGraphics();
+
+    override string getType()
+    {
+        return this.type;
+    }
+
+    override void disableComponent()
+    {
+        this.enabled = false;
+    }
+
+    override void enableComponent()
+    {
+        this.enabled = true;
+    }
+
+    override bool enabled()
+    {
+        return this.enabled;
+    }
+
+    void start()//(GameObjectSharer* gos, GameObject* self) <- change to this argument later
+    {
+
+    }
+}
+
+class GameObject
+{
+    private Component[] components;
+    private bool active = false;
+    private int numberUpdateComponents = 0;
+    private bool hasUpdateComponent = false;
+    private int firstComponentLocation = -1;
+    private int graphicsComponentLocation = -1;
+    private bool hasGraphicComponent = false;
+    private int transformComponentLocation = -1;
+
+    string tag;
+
+    void update()
+    {
+        if(active && hasUpdateComponent)
+        {
+            for(int i = firstComponentLocation; i < firstComponentLocation + numberUpdateComponents; i++)
+            {
+                //if(temp)
+            }
+        }
+    }
 }
 
 struct EntityManager
