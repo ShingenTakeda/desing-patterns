@@ -6,7 +6,7 @@ class Component
     abstract string getSpecificType();
     abstract void disableComponent();
     abstract void enableComponent();
-    abstract bool enabled();
+    abstract bool isEnabled();
     //abstract void start(GameObjectSharer gos, GameObject self);
 }
 
@@ -32,7 +32,7 @@ class UpdateComponent : Component
         this.enabled = true;
     }
 
-    override bool enabled()
+    override bool isEnabled()
     {
         return this.enabled;
     }
@@ -66,7 +66,7 @@ class GraphicsComponentLocation : Component
         this.enabled = true;
     }
 
-    override bool enabled()
+    override bool isEnabled()
     {
         return this.enabled;
     }

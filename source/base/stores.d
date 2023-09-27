@@ -4,6 +4,7 @@ import std;
 import std.path;
 import std.file;
 import raylib;
+import raygui;
 
 struct SpriteStore
 {
