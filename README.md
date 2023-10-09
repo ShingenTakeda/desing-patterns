@@ -1,4 +1,4 @@
-# Doubloons
+# Doubloon
 
 A 2D EC game engine built on top of raylib.
 
