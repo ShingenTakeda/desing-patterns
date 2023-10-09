@@ -1,6 +1,6 @@
-# Design Pattern in D
+# Doubloons
 
-Design patterns in a game dev context.
+A 2D EC game engine built on top of raylib.
 
 build with:
 
